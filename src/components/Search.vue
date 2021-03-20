@@ -112,7 +112,7 @@ export default {
         threshold: .25
       });
 
-      return fuse.search(this.query).slice(0, 15);
+      return fuse.search(this.query, {limit: 6});
     },
     headings() {
       let result = [];

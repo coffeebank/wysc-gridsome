@@ -9,7 +9,10 @@
             class="flex items-center text-ui-primary"
             title="Home"
           >
-            <Logo :width="100" class="text-ui-primary" />
+            <Logo :width="40" class="text-ui-primary" />
+            <span class="hidden ml-2 text-xl font-black tracking-tighter uppercase sm:block">
+              {{ meta.siteName }}
+            </span>
           </g-link>
 
           <div v-if="settings.nav.links.length > 0" class="hidden ml-2 mr-5 sm:block sm:ml-8">
