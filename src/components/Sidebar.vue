@@ -5,10 +5,10 @@
     class="px-4 pt-8 lg:pt-12"
   >
     <div
-      v-for="(section, index) in sidebar.sections"
+      v-for="(section, index) in sidebar"
       :key="section.title"
       class="pb-4 mb-4 border-ui-border"
-      :class="{ 'border-b': index < sidebar.sections.length -1 }"
+      :class="{ 'border-b': index < sidebar.length -1 }"
     >
       <h3 class="pt-0 mt-0 mb-1 text-sm tracking-tight uppercase border-none">
         {{ section.title }}
@@ -45,11 +45,8 @@ query Sidebar {
   metadata {
     settings {
       sidebar {
-        name
-        sections {
-          title
-          items
-        }
+        title
+        items
       }
     }
   }
@@ -68,13 +65,15 @@ export default {
       return this.$page.allMarkdownPage.edges.map(edge => edge.node);
     },
     sidebar() {
-      return this.$static.metadata.settings.sidebar.find(
-        sidebar => sidebar.name === this.$page.markdownPage.sidebar
-      );
+      return this.$static.metadata.settings.sidebar;
+      // return this.$static.metadata.settings.sidebar.find(
+      //   sidebar => sidebar.name === this.$page.markdownPage.sidebar
+      // );
     },
     showSidebar() {
-      return this.$page.markdownPage.sidebar
-        && this.sidebar;
+      return this.sidebar;
+      // return this.$page.markdownPage.sidebar
+      //   && this.sidebar;
     },
     currentPage() {
       return this.$page.markdownPage;

@@ -19,6 +19,7 @@ module.exports = function (api) {
       allMarkdownPage {
         edges {
           node {
+            id
             path
             redirect_from
           }
@@ -30,7 +31,7 @@ module.exports = function (api) {
       node.redirect_from.forEach(element => {
         createPage({
           path: element,
-          component: './src/templates/MarkdownPage.vue',
+          component: './src/templates/RedirectFrom.vue',
           context: {
             id: node.id
           }

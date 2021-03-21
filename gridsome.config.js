@@ -22,24 +22,19 @@ module.exports = {
     },
     sidebar: [
       {
-        name: 'docs',
-        sections: [
-          {
-            title: 'Getting Started',
-            items: [
-              '/docs/',
-              '/docs/installation/',
-              '/docs/writing-content/',
-              '/docs/deploying/',
-            ]
-          },
-          {
-            title: 'Configuration',
-            items: [
-              '/docs/settings/',
-              '/docs/sidebar/',
-            ]
-          }
+        title: 'Getting Started',
+        items: [
+          '/docs/',
+          '/docs/installation/',
+          '/docs/writing-content/',
+          '/docs/deploying/',
+        ]
+      },
+      {
+        title: 'Configuration',
+        items: [
+          '/docs/settings/',
+          '/docs/sidebar/',
         ]
       }
     ]
@@ -55,7 +50,8 @@ module.exports = {
           externalLinksTarget: '_blank',
           externalLinksRel: ['noopener', 'noreferrer'],
           plugins: [
-            '@gridsome/remark-prismjs'
+            '@gridsome/remark-prismjs',
+            'remark-attr'
           ]
         }
       }

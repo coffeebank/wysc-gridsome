@@ -22,6 +22,13 @@
                         </svg>
                     </a>
                 </div>
+
+                <div class="w-full px-2 sm:px-4 max-w-screen-xs">
+                  <ClientOnly>
+                    <Search />
+                  </ClientOnly>
+                </div>
+
                 <div class="px-1 pb-8">
                     <Sidebar @navigate="sidebarOpen = false" />
                 </div>
@@ -170,9 +177,12 @@ query ($id: ID!) {
 import Sidebar from "@/components/Sidebar";
 import OnThisPage from '@/components/OnThisPage.vue';
 
+const Search = () => import(/* webpackChunkName: "search" */ "@/components/Search").catch(error => console.warn(error));
+
 export default {
   components: {
     Sidebar,
+    Search,
     OnThisPage
   },
   
