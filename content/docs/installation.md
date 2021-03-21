@@ -3,6 +3,9 @@ description: ''
 sidebar: 'docs'
 prev: '/docs/'
 next: '/docs/writing-content/'
+redirect-from:
+  - /install
+  - /docs/install
 ---
 
 # Installation

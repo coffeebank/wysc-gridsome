@@ -11,7 +11,32 @@ module.exports = function (api) {
     addMetadata('settings', require('./gridsome.config').settings);
   });
 
-  api.createPages(({ createPage }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api/
-  });
+  // api.createPages(({ createPage }) => {
+  //   // Use the Pages API here: https://gridsome.org/docs/pages-api/
+  // });
+  api.createPages(async ({ graphql, createPage }) => {
+    const { data } = await graphql(`{
+      allMarkdownPage {
+        edges {
+          node {
+            path
+            redirect_from
+          }
+        }
+      }
+    }`)
+
+    data.allMarkdownPage.edges.forEach(({ node }) => {
+      node.redirect_from.forEach(element => {
+        createPage({
+          path: element,
+          component: './src/templates/MarkdownPage.vue',
+          context: {
+            id: node.id
+          }
+        })
+      })
+    })
+  })
+
 }
